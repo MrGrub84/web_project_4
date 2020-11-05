@@ -1,0 +1,9 @@
+@import url(./__logo/header__logo.css);
+@import url(./__line/header__line.css);
+
+.header {
+    max-width: 880px;
+    box-sizing: content-box;
+    margin: 0 auto;
+    padding: 0 27px;
+}
