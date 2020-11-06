@@ -1,0 +1,10 @@
+@import url(./__list/places__list.css);
+@import url(./__place/places__place.css);
+@import url(./__photo/places__photo.css);
+@import url(./__text/places__text.css);
+@import URL(./__favorite/places__favorite.css);
+
+.places {
+    max-width: 880px;
+    margin: 0 auto;
+}
