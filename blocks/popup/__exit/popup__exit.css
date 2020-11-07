@@ -1,0 +1,9 @@
+.popup__exit {
+    font-size: 40px;
+    color: #fff;
+    left: 100%;
+    bottom: 100%;
+    position: absolute;
+    height: 40px;
+    width: 40px;
+}

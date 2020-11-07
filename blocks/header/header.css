@@ -7,3 +7,10 @@
     margin: 0 auto;
     padding: 0 27px;
 }
+
+
+@media screen and (max-width: 320px) {
+    .header {
+        padding: 0;
+    }
+}
