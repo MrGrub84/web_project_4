@@ -28,9 +28,13 @@ save.addEventListener("click", function() {
 });
 
 inputName.addEventListener("keyup", function(evt) {
-    saveProfile();
+    if (evt.keyCode == "13") {
+        saveProfile();
+    }
 });
 
 inputAbout.addEventListener("keyup", function(evt) {
-    saveProfile();
+    if (evt.keyCode == "13") {
+        saveProfile();
+    }
 });
