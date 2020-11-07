@@ -4,8 +4,8 @@
     font-size: 14px;
 }
 
-@media screen and (max-width: 320px) {
-    .popup__name {
+@media screen and (max-width: 530px) {
+    .popup .popup__name {
         max-width: 238px;
         margin: 0 0 30px 22px;
     }

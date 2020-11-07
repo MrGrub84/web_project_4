@@ -10,7 +10,7 @@
     top: calc(50% - (330px / 2));
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 530px) {
     .popup__container {
         max-width: 282px;
         height: 322px;
