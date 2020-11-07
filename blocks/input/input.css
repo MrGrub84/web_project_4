@@ -1,0 +1,13 @@
+.input {
+    max-width: 358px;
+    width: 100%;
+    box-sizing: content-box;
+    border: none;
+    border-bottom: 1px solid #000;
+}
+
+@media screen and (max-width: 320px) {
+    .input {
+        max-width: 238px;
+    }
+}

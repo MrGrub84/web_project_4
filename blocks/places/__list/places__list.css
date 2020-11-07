@@ -7,4 +7,12 @@
     flex-wrap: wrap;
     column-gap: 17px;
     row-gap: 20px;
+    justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+    .places__list {
+        box-sizing: content-box;
+        margin: 0 auto;
+    }
 }

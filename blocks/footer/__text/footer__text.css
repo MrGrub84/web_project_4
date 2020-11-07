@@ -2,7 +2,8 @@
     color: #545454;
     max-width: 880px;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 0 0 19px;
     font-size: 1.125rem;
     line-height: calc(22 / 18);
+    box-sizing: content-box;
 }
