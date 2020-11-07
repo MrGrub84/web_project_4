@@ -1,5 +1,5 @@
 .popup__name {
-    margin: 0 0 30px 36px;
+    margin: 0 36px 30px 36px;
     line-height: calc(17 / 14);
     font-size: 14px;
 }
@@ -7,6 +7,6 @@
 @media screen and (max-width: 530px) {
     .popup .popup__name {
         max-width: 238px;
-        margin: 0 0 30px 22px;
+        margin: 0 22px 30px 22px;
     }
 }
