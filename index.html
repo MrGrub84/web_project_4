@@ -10,7 +10,6 @@
   <div class="page">
     <header class="header">
       <img src="./images/logo.svg" alt="Around the US Logo" class="header__logo">
-      <div class="header__line"></div>
     </header>
     
     <main class="content">
@@ -19,64 +18,63 @@
         <div class="profile__text">
           <div class="profile__container">
             <h1 class="profile__name">Jacques Cousteau</h1>
-            <img src="./images/edit.svg" alt="edit profile" class="button profile__edit">
+            <button alt="edit profile" class="button profile__edit" type="button"></button>
           </div>
           <p class="profile__title">Explorer</p>
         </div>
-        <button class="button profile__add-button"><img src="./images/add-button.svg" alt="" class="profil__plus-sign"></button>
+        <button class="button profile__add-button" type="button"></button>
       </section>
 
       <section class="places">
         <ul class="places__list">
           <li class="places__place">
             <img src="./images/places-yosemite.jpg" alt="" class="places__photo">
-            <p class="places__text">Yosemite Valley</p>
-            <img src="./images/favorite.svg" alt="save to favorites" class="places__favorite">
+            <h2 class="places__text">Yosemite Valley</h2>
+            <button class="button places__favorite" type="button"></button>
           </li>
           <li class="places__place">
             <img src="./images/places-louis.jpg" alt="" class="places__photo">
-            <p class="places__text">Lake Louise</p>
-            <img src="./images/favorite.svg" alt="save to favorites" class="places__favorite">
+            <h2 class="places__text">Lake Louise</h2>
+            <button class="button places__favorite" type="button"></button>
           </li>
           <li class="places__place">
             <img src="./images/places-bald.png" alt="" class="places__photo">
-            <p class="places__text">Bald Mountains</p>
-            <img src="./images/favorite.svg" alt="save to favorites" class="places__favorite">
+            <h2 class="places__text">Bald Mountains</h2>
+            <button class="button places__favorite" type="button"></button>
           </li>
           <li class="places__place">
             <img src="./images/places-latemar.png" alt="" class="places__photo">
-            <p class="places__text">Latemar</p>
-            <img src="./images/favorite.svg" alt="save to favorites" class="places__favorite">
+            <h2 class="places__text">Latemar</h2>
+            <button class="button places__favorite" type="button"></button>
           </li>
           <li class="places__place">
             <img src="./images/places-vanoise.png" alt="" class="places__photo">
-            <p class="places__text">Vanoise National Park</p>
-            <img src="./images/favorite.svg" alt="save to favorites" class="places__favorite">
+            <h2 class="places__text">Vanoise National Park</h2>
+            <button class="button places__favorite" type="button"></button>
           </li>
           <li class="places__place">
             <img src="./images/places-lago.png" alt="" class="places__photo">
-            <p class="places__text">Lago di Braies</p>
-            <img src="./images/favorite.svg" alt="save to favorites" class="places__favorite">
+            <h2 class="places__text">Lago di Braies</h2>
+            <button class="button places__favorite" type="button"></button>
           </li>
         </ul>
-      </section>
-
-      <section class="popup">
-        <div class="popup__container">
-          <img src="./images/exit.svg" alt="" class="button popup__exit">
-          <h2 class="popup__title">Edit profile</h2>
-          <form action="index.html" method="GET" class="popup__form">
-            <input type="text" class="input popup__name" placeholder="">
-            <input type="text" class="input popup__about" placeholder="">
-            <input class="popup__button" type="submit" value="Save">
-          </form>
-        </div>
       </section>
     </main>
   
     <footer class="footer">
       <p class="footer__text">© 2020 Around The U.S.</p>
     </footer>
+    <div class="popup">
+      <div class="popup__container">
+        <img src="./images/exit.svg" alt="" class="button popup__exit">
+        <h3 class="popup__title">Edit profile</h3>
+        <form action="#" method="GET" class="popup__form" id="profileForm"> <!-- MDN link you provided said "name" attr is deprecated as of HTML 4 and to use "id" instead -->
+          <input type="text" class="input popup__name" placeholder="">
+          <input type="text" class="input popup__about" placeholder="">
+          <button class="popup__button" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
   </div>
   <script src="./scripts/index.js"></script>
 </body>
