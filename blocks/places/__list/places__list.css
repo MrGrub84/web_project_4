@@ -10,9 +10,3 @@
     justify-content: center;
     box-sizing: content-box;
 }
-
-@media screen and (max-width: 768px) {
-    .places__list {
-        padding: 36px 0 0 0;
-    }
-}

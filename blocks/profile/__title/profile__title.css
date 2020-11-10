@@ -1,18 +1,13 @@
 .profile__title {
     padding: 0;
-    margin: 16px 0;
+    margin: 10px 0 0 0;
     font-size: 18px;
     line-height: 22px;
 }
 
-@media screen and (max-width: 768px) {
-    .profile__title {
-        text-align: center;
-    }
-}
-
 @media screen and (max-width: 320px) {
     .profile__title {
-        text-align: center;
+        font-size: .875rem;
+        line-height: 1.215;
     }
 }
