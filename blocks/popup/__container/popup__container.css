@@ -7,7 +7,7 @@
     border-radius: 10px;
     position: absolute;
     left: calc(50% - (430px / 2));
-    top: calc(50% - (330px / 2));
+    top: calc(50% - (290px / 2));
 }
 
 @media screen and (max-width: 530px) {
