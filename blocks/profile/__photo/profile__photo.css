@@ -1,5 +1,6 @@
 .profile__photo {
-    max-height: 127px;
+    padding: 0;
+    max-height: 121px;
     border-radius: 100px;
     margin: 36px 0 47px 0;
 }
