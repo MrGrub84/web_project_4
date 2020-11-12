@@ -7,17 +7,15 @@ let name = document.querySelector(".profile__name");
 let about = document.querySelector(".profile__title");
 let popup = document.querySelector(".popup");
 
-
+function closePopup() {
+    popup.classList.remove("popup_opened");
+}
 
 function saveProfile(evt) {
     evt.preventDefault();
     name.textContent = inputName.value;
     about.textContent = inputAbout.value;
-    popup.classList.remove("popup_opened");
-}
-
-function closePopup() {
-    popup.classList.remove("popup_opened");
+    closePopup();
 }
 
 function openPopup() {
@@ -29,5 +27,3 @@ function openPopup() {
 edit.addEventListener("click", openPopup);
 exit.addEventListener("click", closePopup);
 form.addEventListener('submit', saveProfile); 
-
-/** Thanks, this is a lot cleaner looking. */
