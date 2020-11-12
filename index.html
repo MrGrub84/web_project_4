@@ -67,11 +67,11 @@
 
     <div class="popup">
       <div class="popup__container">
-        <button class="button popup__exit"></button>
+        <button class="button popup__exit" type="button"></button>
         <h3 class="popup__title">Edit profile</h3>
-        <form action="#" method="GET" class="popup__form" id="profileForm"> <!-- MDN link you provided said "name" attr is deprecated as of HTML 4 and to use "id" instead -->
-          <input type="text" class="input popup__name" placeholder="">
-          <input type="text" class="input popup__about" placeholder="">
+        <form action="#" method="GET" class="popup__form" name="profileForm"> 
+          <input type="text" class="input popup__name" placeholder="Name" name="name">
+          <input type="text" class="input popup__about" placeholder="About me" name="about">
           <button class="popup__button" type="submit">Save</button>
         </form>
       </div>
