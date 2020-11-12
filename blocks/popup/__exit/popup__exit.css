@@ -15,8 +15,8 @@
 
 @media screen and (max-width: 530px) {
     .popup__exit {
-        height: 26px;
-        width: 26px;
-        left: calc(100% - 26px);
+        background-size: 36px 36px;
+        left: calc(100% - 36px);
+        bottom: calc(100% + 13px);
     }
 }
