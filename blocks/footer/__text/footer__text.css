@@ -8,7 +8,7 @@
     box-sizing: content-box;
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1279px) {
     .footer__text {
         padding: 0 0 0 19px;
     }
