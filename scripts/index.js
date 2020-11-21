@@ -1,11 +1,14 @@
-let exit = document.querySelector(".popup__exit");
 let edit = document.querySelector(".profile__edit");
-let form = document.querySelector(".popup__form");
-let inputName = document.querySelector(".popup__name");
-let inputAbout = document.querySelector(".popup__about");
+let add = document.querySelector(".profile__add-button");
 let name = document.querySelector(".profile__name");
 let about = document.querySelector(".profile__title");
+
+let exitProfile = document.querySelector(".popup__profile .popup__exit");
+let exitAdd = document.querySelector(".popup__add .popup__exit");
+let form = document.querySelector(".popup__form");
 let popup = document.querySelector(".popup");
+let inputName = document.querySelector(".popup__name");
+let inputAbout = document.querySelector(".popup__about");
 
 const placeTemp = document.querySelector("#placeTemplate").content;
 const initialCards = [
@@ -45,6 +48,7 @@ function addPlace(name, link) {
         template.querySelector(".places__photo").alt = name;
         template.querySelector(".places__text").textContent = name;
         places.appendChild(template);
+        return true;
     } else {
         return false;
     }
@@ -58,6 +62,8 @@ function onLoad() {
 
 function closePopup() {
     popup.classList.remove("popup_opened");
+    document.querySelector(".popup__profile").style.display = "none";
+    document.querySelector(".popup__add").style.display = "none";
 }
 
 function saveProfile(evt) {
@@ -67,13 +73,21 @@ function saveProfile(evt) {
     closePopup();
 }
 
-function openPopup() {
-    inputName.value = name.textContent;
-    inputAbout.value = about.textContent;
+function openPopup(e) {
+    if (e.target.classList.contains("profile__edit")) {
+        inputName.value = name.textContent;
+        inputAbout.value = about.textContent;
+        document.querySelector(".popup__profile").style.display = "block";
+    } else if (e.target.classList.contains("profile__add-button")) {
+        document.querySelector(".popup__add").style.display = "block";
+    }
+
     popup.classList.add("popup_opened");
 }
 
 edit.addEventListener("click", openPopup);
-exit.addEventListener("click", closePopup);
-form.addEventListener('submit', saveProfile); 
+add.addEventListener("click", openPopup);
+exitProfile.addEventListener("click", closePopup);
+exitAdd.addEventListener("click", closePopup);
+form.addEventListener('submit', saveProfile);
 onLoad();

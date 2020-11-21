@@ -37,14 +37,28 @@
     </footer>
 
     <div class="popup">
-      <div class="popup__container">
-        <button class="button popup__exit" type="button" aria-label="Close Pop-up"></button>
-        <h3 class="popup__title">Edit profile</h3>
-        <form action="#" method="GET" class="popup__form" name="profileForm"> 
-          <input type="text" class="input popup__name" placeholder="Name" name="name">
-          <input type="text" class="input popup__about" placeholder="About me" name="about">
-          <button class="popup__button" type="submit">Save</button>
-        </form>
+      <div class="popup__profile">
+        <div class="popup__container">
+          <button class="button popup__exit" type="button" aria-label="Close Pop-up"></button>
+          <h3 class="popup__title">Edit profile</h3>
+          <form action="#" method="GET" class="popup__form" name="profileForm"> 
+            <input type="text" class="input popup__name" placeholder="Name" name="name">
+            <input type="text" class="input popup__about" placeholder="About me" name="about">
+            <button class="popup__button" type="submit">Save</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup__add">
+        <div class="popup__container">
+          <button class="button popup__exit" type="button" aria-label="Close Pop-up"></button>
+          <h3 class="popup__title">Add Place</h3>
+          <form action="#" method="GET" class="popup__form" name="addForm"> 
+            <input type="text" class="input popup__name" placeholder="Title" name="title">
+            <input type="text" class="input popup__about" placeholder="Image URL" name="url">
+            <button class="popup__button" type="submit">Save</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
