@@ -27,36 +27,7 @@
 
       <section class="places">
         <ul class="places__list">
-          <li class="places__place">
-            <img src="./images/places-yosemite.jpg" alt="Yosemite Valley" class="places__photo">
-            <h2 class="places__text">Yosemite Valley</h2>
-            <button class="button places__favorite" type="button" aria-label="Like Place"></button>
-          </li>
-          <li class="places__place">
-            <img src="./images/places-louis.jpg" alt="Lake Louise" class="places__photo">
-            <h2 class="places__text">Lake Louise</h2>
-            <button class="button places__favorite" type="button" aria-label="Like Place"></button>
-          </li>
-          <li class="places__place">
-            <img src="./images/places-bald.png" alt="Bald Mountains" class="places__photo">
-            <h2 class="places__text">Bald Mountains</h2>
-            <button class="button places__favorite" type="button" aria-label="Like Place"></button>
-          </li>
-          <li class="places__place">
-            <img src="./images/places-latemar.png" alt="Latemar" class="places__photo">
-            <h2 class="places__text">Latemar</h2>
-            <button class="button places__favorite" type="button" aria-label="Like Place"></button>
-          </li>
-          <li class="places__place">
-            <img src="./images/places-vanoise.png" alt="Vanoise National Park" class="places__photo">
-            <h2 class="places__text">Vanoise National Park</h2>
-            <button class="button places__favorite" type="button" aria-label="Like Place"></button>
-          </li>
-          <li class="places__place">
-            <img src="./images/places-lago.png" alt="Lago di Braies" class="places__photo">
-            <h2 class="places__text">Lago di Braies</h2>
-            <button class="button places__favorite" type="button" aria-label="Like Place"></button>
-          </li>
+          
         </ul>
       </section>
     </main>
@@ -77,6 +48,13 @@
       </div>
     </div>
   </div>
+  <template id="placeTemplate">
+    <li class="places__place">
+      <img src="" alt="" class="places__photo">
+      <h2 class="places__text"></h2>
+      <button class="button places__favorite" type="button" aria-label="Like Place"></button>
+    </li>
+  </template>
   <script src="./scripts/index.js"></script>
 </body>
 </html>
