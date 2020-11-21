@@ -13,3 +13,10 @@
         padding: 0 0 0 19px;
     }
 }
+
+@media screen and (max-width: 320px) {
+    .footer__text {
+        font-size: .875rem;
+        line-height: calc(17 / 14);
+    }
+}
