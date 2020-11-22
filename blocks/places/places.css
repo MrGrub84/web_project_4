@@ -2,7 +2,8 @@
 @import url(./__place/places__place.css);
 @import url(./__photo/places__photo.css);
 @import url(./__text/places__text.css);
-@import URL(./__favorite/places__favorite.css);
+@import url(./__favorite/places__favorite.css);
+@import url(./__favorite/_active/places__favorite_active.css);
 
 .places {
     max-width: 880px;

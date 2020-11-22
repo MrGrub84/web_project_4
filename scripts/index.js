@@ -13,6 +13,8 @@ let inputAbout = document.querySelector(".popup__about");
 let inputPlaceTitle = document.querySelector(".popup__place-title");
 let inputPlaceUrl = document.querySelector(".popup__url");
 
+let likes = document.querySelectorAll(".places__favorite");
+
 const placeTemp = document.querySelector("#placeTemplate").content;
 const initialCards = [
     {
@@ -41,6 +43,10 @@ const initialCards = [
     }
 ];
 
+function like(evt) {
+    evt.target.classList.toggle("places__favorite_active");
+}
+
 
 function addPlace(evt, title = "", link = "") {
     const places = document.querySelector('.places__list');
@@ -56,6 +62,7 @@ function addPlace(evt, title = "", link = "") {
         template.querySelector(".places__photo").src = link;
         template.querySelector(".places__photo").alt = title;
         template.querySelector(".places__text").textContent = title;
+        template.querySelector(".places__favorite").addEventListener("click", like);
         places.prepend(template);
         closePopup();
         return true;
@@ -102,4 +109,5 @@ exitProfile.addEventListener("click", closePopup);
 exitAdd.addEventListener("click", closePopup);
 formProfile.addEventListener('submit', saveProfile);
 formAdd.addEventListener('submit', addPlace);
+
 onLoad();
