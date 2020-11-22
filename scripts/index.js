@@ -5,10 +5,13 @@ let about = document.querySelector(".profile__title");
 
 let exitProfile = document.querySelector(".popup__profile .popup__exit");
 let exitAdd = document.querySelector(".popup__add .popup__exit");
-let form = document.querySelector(".popup__form");
+let formProfile = document.querySelector(".popup__form[name='profileForm']");
+let formAdd = document.querySelector(".popup__form[name='addForm']");
 let popup = document.querySelector(".popup");
 let inputName = document.querySelector(".popup__name");
 let inputAbout = document.querySelector(".popup__about");
+let inputPlaceTitle = document.querySelector(".popup__place-title");
+let inputPlaceUrl = document.querySelector(".popup__url");
 
 const placeTemp = document.querySelector("#placeTemplate").content;
 const initialCards = [
@@ -39,24 +42,32 @@ const initialCards = [
 ];
 
 
-function addPlace(name, link) {
+function addPlace(evt, title = "", link = "") {
     const places = document.querySelector('.places__list');
+
+    if (evt) {
+        evt.preventDefault();
+        title = inputPlaceTitle.value;
+        link = inputPlaceUrl.value;
+    }
 
     if (name && link) {
         let template = placeTemp.cloneNode(true);
         template.querySelector(".places__photo").src = link;
-        template.querySelector(".places__photo").alt = name;
-        template.querySelector(".places__text").textContent = name;
-        places.appendChild(template);
+        template.querySelector(".places__photo").alt = title;
+        template.querySelector(".places__text").textContent = title;
+        places.prepend(template);
+        closePopup();
         return true;
     } else {
+        closePopup();
         return false;
     }
 }
 
 function onLoad() {
     initialCards.forEach(function(item) {
-        addPlace(item.name, item.link);
+        addPlace(false, item.name, item.link);
     });
 }
 
@@ -89,5 +100,6 @@ edit.addEventListener("click", openPopup);
 add.addEventListener("click", openPopup);
 exitProfile.addEventListener("click", closePopup);
 exitAdd.addEventListener("click", closePopup);
-form.addEventListener('submit', saveProfile);
+formProfile.addEventListener('submit', saveProfile);
+formAdd.addEventListener('submit', addPlace);
 onLoad();
