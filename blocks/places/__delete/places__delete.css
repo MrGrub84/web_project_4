@@ -1,0 +1,13 @@
+.places__delete {
+    height: 19px;
+    width: 18px;
+    background-image: url(../../../images/delete-card.png);
+    position: absolute;
+    top: 25px;
+    right: 16px;
+    cursor: pointer;
+}
+
+.places__delete:hover {
+    opacity: .6;
+}

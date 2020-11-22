@@ -14,6 +14,7 @@ let inputPlaceTitle = document.querySelector(".popup__place-title");
 let inputPlaceUrl = document.querySelector(".popup__url");
 
 let likes = document.querySelectorAll(".places__favorite");
+let places = document.querySelector('.places__list');
 
 const placeTemp = document.querySelector("#placeTemplate").content;
 const initialCards = [
@@ -47,10 +48,12 @@ function like(evt) {
     evt.target.classList.toggle("places__favorite_active");
 }
 
+function deleteCard(evt) {
+    evt.target.closest(".places__place").remove();
+}
+
 
 function addPlace(evt, title = "", link = "") {
-    const places = document.querySelector('.places__list');
-
     if (evt) {
         evt.preventDefault();
         title = inputPlaceTitle.value;
@@ -63,6 +66,7 @@ function addPlace(evt, title = "", link = "") {
         template.querySelector(".places__photo").alt = title;
         template.querySelector(".places__text").textContent = title;
         template.querySelector(".places__favorite").addEventListener("click", like);
+        template.querySelector(".places__delete").addEventListener("click", deleteCard);
         places.prepend(template);
         closePopup();
         return true;

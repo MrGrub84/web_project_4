@@ -10,4 +10,5 @@
         "photo photo"
         "name favorite";
     align-items: center;
+    position: relative;
 }

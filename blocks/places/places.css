@@ -4,6 +4,7 @@
 @import url(./__text/places__text.css);
 @import url(./__favorite/places__favorite.css);
 @import url(./__favorite/_active/places__favorite_active.css);
+@import url(./__delete/places__delete.css);
 
 .places {
     max-width: 880px;
