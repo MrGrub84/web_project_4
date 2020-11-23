@@ -8,6 +8,12 @@
 @import url(./__profile/popup__profile.css);
 @import url(./__place-title/popup__place-title.css);
 @import url(./__url/popup__url.css);
+@import url(./__photo-display/popup__photo-display.css);
+@import url(./__photo/popup__photo.css);
+@import url(./__photo-exit/popup__photo-exit.css);
+@import url(./__photo-display/popup__photo-display.css);
+@import url(./__photo-wrapper/popup__photo-wrapper.css);
+@import url(./__photo-title/popup__photo-title.css);
 
 .popup {
     position: fixed;

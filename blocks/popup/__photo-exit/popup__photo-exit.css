@@ -1,0 +1,14 @@
+.popup__photo-exit {
+    font-size: 40px;
+    color: #fff;
+    height: 40px;
+    width: 40px;
+    left: 100%;
+    bottom: 100%;
+    position: absolute;
+    background-image: url(../../../images/exit.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+}
