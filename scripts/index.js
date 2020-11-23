@@ -13,6 +13,7 @@ let inputName = document.querySelector(".popup__name");
 let inputAbout = document.querySelector(".popup__about");
 let inputPlaceTitle = document.querySelector(".popup__place-title");
 let inputPlaceUrl = document.querySelector(".popup__url");
+let popupProfile = document.querySelector(".popup__profile");
 
 
 let likes = document.querySelectorAll(".places__favorite");
@@ -92,7 +93,10 @@ function onLoad() {
 
 function closePopup() {
     popup.classList.remove("popup_opened");
-    document.querySelector(".popup__profile").style.display = "none";
+
+    popupProfile.style.visibility = "hidden";
+    popupProfile.style.opacity = "0";
+
     document.querySelector(".popup__add").style.display = "none";
     document.querySelector(".popup__photo-display").style.display = "none";
 }
@@ -105,11 +109,11 @@ function saveProfile(evt) {
 }
 
 function openPopup(e) {
-    console.log(e.target.classList);
     if (e.target.classList.contains("profile__edit")) {
         inputName.value = name.textContent;
         inputAbout.value = about.textContent;
-        document.querySelector(".popup__profile").style.display = "block";
+        popupProfile.style.visibility = "visible";
+        popupProfile.style.opacity = "1";
     } else if (e.target.classList.contains("profile__add-button")) {
         document.querySelector(".popup__add").style.display = "block";
     } else if (e.target.classList.contains("places__photo")) {
