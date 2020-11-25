@@ -49,7 +49,7 @@ function submitPlace(evt) {
 
 function addPlace(title = "", link = "") {
     if (title && link) {
-        let template = placeTemp.cloneNode(true);
+        const template = placeTemp.cloneNode(true);
         template.querySelector(".places__photo").src = link;
         template.querySelector(".places__photo").alt = title;
         template.querySelector(".places__text").textContent = title;
