@@ -34,6 +34,7 @@ function deletePlace(evt) {
 
 function showPlace(src, title) {
     const photo = document.querySelector(".popup__photo");
+    photo.src = "";
     photo.src = src;
     photo.alt = title;
     document.querySelector(".popup__photo-title").textContent = title;
@@ -44,7 +45,8 @@ function submitPlace(evt) {
 
     const template = addPlace(inputPlaceTitle.value, inputPlaceUrl.value);
     places.prepend(template);
-    closePopup();
+    clearForm(formAdd);
+    closePopup("add");
 }
 
 
@@ -57,7 +59,7 @@ function addPlace(title = "", link = "") {
         template.querySelector(".places__text").textContent = title;
         template.querySelector(".places__favorite").addEventListener("click", like);
         template.querySelector(".places__delete").addEventListener("click", deletePlace);
-        template.querySelector(".places__photo").addEventListener("click", openPopup);
+        template.querySelector(".places__photo").addEventListener("click", function(evt) { openPopup("photo", evt.target); });
         return template;
     } else {
         return false;
@@ -71,46 +73,72 @@ function onLoad() {
     });
 }
 
-function closePopup() {
+function closePopupOverlay() {
     popup.classList.remove("popup_opened");
-
-    popupProfile.classList.remove("popup_opened");
-    popupAdd.classList.remove("popup_opened");
-    popupPhoto.classList.remove("popup_opened");
-    popupSrc.src = "";
 }
+
+function openPopupOverlay() {
+    popup.classList.add("popup_opened");
+
+}
+
+function closePopup(elem) {
+    switch (elem) {
+        case "profile":
+            popupProfile.classList.remove("popup_opened");
+        break;
+        case "add":
+            popupAdd.classList.remove("popup_opened");
+        break;
+        case "photo":
+            popupPhoto.classList.remove("popup_opened");
+        break;
+    }
+    closePopupOverlay();
+}
+
 
 function saveProfile(evt) {
     evt.preventDefault();
     profileName.textContent = inputName.value;
     profileAbout.textContent = inputAbout.value;
-    closePopup();
+    closePopupOverlay();
 }
 
-function openPopup(e) {
-    if (e.target.classList.contains("profile__edit")) {
-        inputName.value = profileName.textContent;
-        inputAbout.value = profileAbout.textContent;
-        popupProfile.classList.add("popup_opened");
-    } else if (e.target.classList.contains("profile__add-button")) {
-        popupAdd.classList.add("popup_opened");
-    } else if (e.target.classList.contains("places__photo")) {
-        const place = e.target.parentElement;
-        const src = e.target.src;
-        const title = place.querySelector(".places__text").textContent;
-        
-        showPlace(src, title);
-        popupPhoto.classList.add("popup_opened");
+function getProfile() {
+    inputName.value = profileName.textContent;
+    inputAbout.value = profileAbout.textContent;
+}
+
+function clearForm(form) {
+    form.querySelectorAll("input").forEach(function(item) { item.value = ""; });
+}
+
+function openPopup(elem, target = false) {
+    switch (elem) {
+        case "profile":
+            popupProfile.classList.add("popup_opened");
+        break;
+        case "add":
+            popupAdd.classList.add("popup_opened");
+        break;
+        case "photo":
+            const place = target.parentElement;
+            const src = target.src;
+            const title = place.querySelector(".places__text").textContent;
+            
+            showPlace(src, title);
+            popupPhoto.classList.add("popup_opened");
+        break;
     }
-
-    popup.classList.add("popup_opened");
+    openPopupOverlay();
 }
 
-profileEdit.addEventListener("click", openPopup);
-addButton.addEventListener("click", openPopup);
-exitProfile.addEventListener("click", closePopup);
-exitAdd.addEventListener("click", closePopup);
-exitPhoto.addEventListener("click", closePopup);
+profileEdit.addEventListener("click", function() { openPopup("profile"); });
+addButton.addEventListener("click", function() { openPopup("add"); });
+exitProfile.addEventListener("click", function() { closePopup("profile"); });
+exitAdd.addEventListener("click", function() { closePopup("add"); });
+exitPhoto.addEventListener("click", function() { closePopup("photo"); });
 formProfile.addEventListener('submit', saveProfile);
 formAdd.addEventListener('submit', submitPlace);
 
