@@ -50,8 +50,9 @@ function submitPlace(evt) {
 function addPlace(title = "", link = "") {
     if (title && link) {
         const template = placeTemp.cloneNode(true);
-        template.querySelector(".places__photo").src = link;
-        template.querySelector(".places__photo").alt = title;
+        const elementPhoto = template.querySelector(".places__photo");
+        elementPhoto.src = link;
+        elementPhoto.alt = title;
         template.querySelector(".places__text").textContent = title;
         template.querySelector(".places__favorite").addEventListener("click", like);
         template.querySelector(".places__delete").addEventListener("click", deletePlace);
