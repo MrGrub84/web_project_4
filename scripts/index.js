@@ -39,14 +39,15 @@ function showPlace(src, title) {
     document.querySelector(".popup__photo-title").textContent = title;
 }
 
+function submitPlace(evt) {
+    evt.preventDefault();
 
-function addPlace(evt, title = "", link = "") {
-    if (evt) {
-        evt.preventDefault();
-        title = inputPlaceTitle.value;
-        link = inputPlaceUrl.value;
-    }
+    addPlace(inputPlaceTitle.value, inputPlaceUrl.value);
+    closePopup();
+}
 
+
+function addPlace(title = "", link = "") {
     if (title && link) {
         let template = placeTemp.cloneNode(true);
         template.querySelector(".places__photo").src = link;
@@ -56,17 +57,15 @@ function addPlace(evt, title = "", link = "") {
         template.querySelector(".places__delete").addEventListener("click", deletePlace);
         template.querySelector(".places__photo").addEventListener("click", openPopup);
         places.prepend(template);
-        closePopup();
         return true;
     } else {
-        closePopup();
         return false;
     }
 }
 
 function onLoad() {
     initialCards.forEach(function(item) {
-        addPlace(false, item.name, item.link);
+        addPlace(item.name, item.link);
     });
 }
 
@@ -111,6 +110,6 @@ exitProfile.addEventListener("click", closePopup);
 exitAdd.addEventListener("click", closePopup);
 exitPhoto.addEventListener("click", closePopup);
 formProfile.addEventListener('submit', saveProfile);
-formAdd.addEventListener('submit', addPlace);
+formAdd.addEventListener('submit', submitPlace);
 
 onLoad();
