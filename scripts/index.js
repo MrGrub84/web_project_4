@@ -1,26 +1,26 @@
-let edit = document.querySelector(".profile__edit");
-let add = document.querySelector(".profile__add-button");
-let name = document.querySelector(".profile__name");
-let about = document.querySelector(".profile__title");
+const edit = document.querySelector(".profile__edit");
+const add = document.querySelector(".profile__add-button");
+const name = document.querySelector(".profile__name");
+const about = document.querySelector(".profile__title");
 
-let exitProfile = document.querySelector(".popup__profile .popup__exit");
-let exitAdd = document.querySelector(".popup__add .popup__exit");
-let exitPhoto = document.querySelector(".popup__photo-exit");
-let formProfile = document.querySelector(".popup__form[name='profileForm']");
-let formAdd = document.querySelector(".popup__form[name='addForm']");
-let popup = document.querySelector(".popup");
-let inputName = document.querySelector(".popup__name");
-let inputAbout = document.querySelector(".popup__about");
-let inputPlaceTitle = document.querySelector(".popup__place-title");
-let inputPlaceUrl = document.querySelector(".popup__url");
-let popupProfile = document.querySelector(".popup__profile");
-let popupAdd = document.querySelector(".popup__add");
-let popupPhoto = document.querySelector(".popup__photo-display");
-let popupSrc = document.querySelector(".popup__photo");
+const exitProfile = document.querySelector(".popup__profile .popup__exit");
+const exitAdd = document.querySelector(".popup__add .popup__exit");
+const exitPhoto = document.querySelector(".popup__photo-exit");
+const formProfile = document.querySelector(".popup__form[name='profileForm']");
+const formAdd = document.querySelector(".popup__form[name='addForm']");
+const popup = document.querySelector(".popup");
+const inputName = document.querySelector(".popup__name");
+const inputAbout = document.querySelector(".popup__about");
+const inputPlaceTitle = document.querySelector(".popup__place-title");
+const inputPlaceUrl = document.querySelector(".popup__url");
+const popupProfile = document.querySelector(".popup__profile");
+const popupAdd = document.querySelector(".popup__add");
+const popupPhoto = document.querySelector(".popup__photo-display");
+const popupSrc = document.querySelector(".popup__photo");
 
 
-let likes = document.querySelectorAll(".places__favorite");
-let places = document.querySelector('.places__list');
+const likes = document.querySelectorAll(".places__favorite");
+const places = document.querySelector('.places__list');
 
 const placeTemp = document.querySelector("#placeTemplate").content;
 const initialCards = [
@@ -59,7 +59,9 @@ function deletePlace(evt) {
 }
 
 function showPlace(src, title) {
-    document.querySelector(".popup__photo").src = src;
+    const photo = document.querySelector(".popup__photo");
+    photo.src = src;
+    photo.alt = title;
     document.querySelector(".popup__photo-title").textContent = title;
 }
 
@@ -118,9 +120,9 @@ function openPopup(e) {
     } else if (e.target.classList.contains("profile__add-button")) {
         popupAdd.classList.add("popup_opened");
     } else if (e.target.classList.contains("places__photo")) {
-        let place = e.target.parentElement;
-        let src = e.target.src;
-        let title = place.querySelector(".places__text").textContent;
+        const place = e.target.parentElement;
+        const src = e.target.src;
+        const title = place.querySelector(".places__text").textContent;
         
         showPlace(src, title);
         popupPhoto.classList.add("popup_opened");
