@@ -1,7 +1,7 @@
-const edit = document.querySelector(".profile__edit");
-const add = document.querySelector(".profile__add-button");
-const name = document.querySelector(".profile__name");
-const about = document.querySelector(".profile__title");
+const profileEdit = document.querySelector(".profile__edit");
+const addButton = document.querySelector(".profile__add-button");
+const profileName = document.querySelector(".profile__name");
+const profileAbout = document.querySelector(".profile__title");
 
 const exitProfile = document.querySelector(".popup__profile .popup__exit");
 const exitAdd = document.querySelector(".popup__add .popup__exit");
@@ -73,7 +73,7 @@ function addPlace(evt, title = "", link = "") {
         link = inputPlaceUrl.value;
     }
 
-    if (name && link) {
+    if (title && link) {
         let template = placeTemp.cloneNode(true);
         template.querySelector(".places__photo").src = link;
         template.querySelector(".places__photo").alt = title;
@@ -107,15 +107,15 @@ function closePopup() {
 
 function saveProfile(evt) {
     evt.preventDefault();
-    name.textContent = inputName.value;
-    about.textContent = inputAbout.value;
+    profileName.textContent = inputName.value;
+    profileAbout.textContent = inputAbout.value;
     closePopup();
 }
 
 function openPopup(e) {
     if (e.target.classList.contains("profile__edit")) {
-        inputName.value = name.textContent;
-        inputAbout.value = about.textContent;
+        inputName.value = profileName.textContent;
+        inputAbout.value = profileAbout.textContent;
         popupProfile.classList.add("popup_opened");
     } else if (e.target.classList.contains("profile__add-button")) {
         popupAdd.classList.add("popup_opened");
@@ -131,8 +131,8 @@ function openPopup(e) {
     popup.classList.add("popup_opened");
 }
 
-edit.addEventListener("click", openPopup);
-add.addEventListener("click", openPopup);
+profileEdit.addEventListener("click", openPopup);
+addButton.addEventListener("click", openPopup);
 exitProfile.addEventListener("click", closePopup);
 exitAdd.addEventListener("click", closePopup);
 exitPhoto.addEventListener("click", closePopup);
