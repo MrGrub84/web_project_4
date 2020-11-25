@@ -42,7 +42,8 @@ function showPlace(src, title) {
 function submitPlace(evt) {
     evt.preventDefault();
 
-    addPlace(inputPlaceTitle.value, inputPlaceUrl.value);
+    const template = addPlace(inputPlaceTitle.value, inputPlaceUrl.value);
+    places.prepend(template);
     closePopup();
 }
 
@@ -57,8 +58,7 @@ function addPlace(title = "", link = "") {
         template.querySelector(".places__favorite").addEventListener("click", like);
         template.querySelector(".places__delete").addEventListener("click", deletePlace);
         template.querySelector(".places__photo").addEventListener("click", openPopup);
-        places.prepend(template);
-        return true;
+        return template;
     } else {
         return false;
     }
@@ -66,7 +66,8 @@ function addPlace(title = "", link = "") {
 
 function onLoad() {
     initialCards.forEach(function(item) {
-        addPlace(item.name, item.link);
+        const template = addPlace(item.name, item.link);
+        places.prepend(template);
     });
 }
 
