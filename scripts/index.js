@@ -14,6 +14,9 @@ let inputAbout = document.querySelector(".popup__about");
 let inputPlaceTitle = document.querySelector(".popup__place-title");
 let inputPlaceUrl = document.querySelector(".popup__url");
 let popupProfile = document.querySelector(".popup__profile");
+let popupAdd = document.querySelector(".popup__add");
+let popupPhoto = document.querySelector(".popup__photo-display");
+let popupSrc = document.querySelector(".popup__photo");
 
 
 let likes = document.querySelectorAll(".places__favorite");
@@ -94,11 +97,10 @@ function onLoad() {
 function closePopup() {
     popup.classList.remove("popup_opened");
 
-    popupProfile.style.visibility = "hidden";
-    popupProfile.style.opacity = "0";
-
-    document.querySelector(".popup__add").style.display = "none";
-    document.querySelector(".popup__photo-display").style.display = "none";
+    popupProfile.classList.remove("popup_opened");
+    popupAdd.classList.remove("popup_opened");
+    popupPhoto.classList.remove("popup_opened");
+    popupSrc.src = "";
 }
 
 function saveProfile(evt) {
@@ -112,17 +114,16 @@ function openPopup(e) {
     if (e.target.classList.contains("profile__edit")) {
         inputName.value = name.textContent;
         inputAbout.value = about.textContent;
-        popupProfile.style.visibility = "visible";
-        popupProfile.style.opacity = "1";
+        popupProfile.classList.add("popup_opened");
     } else if (e.target.classList.contains("profile__add-button")) {
-        document.querySelector(".popup__add").style.display = "block";
+        popupAdd.classList.add("popup_opened");
     } else if (e.target.classList.contains("places__photo")) {
         let place = e.target.parentElement;
         let src = e.target.src;
         let title = place.querySelector(".places__text").textContent;
         
         showPlace(src, title);
-        document.querySelector(".popup__photo-display").style.display = "flex";
+        popupPhoto.classList.add("popup_opened");
     }
 
     popup.classList.add("popup_opened");

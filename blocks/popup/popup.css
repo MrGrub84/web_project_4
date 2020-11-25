@@ -23,5 +23,5 @@
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
     color: #fff;
-    display: none;
+    visibility: hidden;
 }

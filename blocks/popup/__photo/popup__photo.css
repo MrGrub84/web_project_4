@@ -2,3 +2,30 @@
    max-width: 816px;
    max-height: 540px;
 }
+
+@media screen and (max-width: 820px) {
+   .popup__photo {
+      max-width: 640px;
+      max-height: 420px;
+   }
+}
+
+@media screen and (max-width: 640px) {
+   .popup__photo {
+      max-width: 480px;
+      max-height: 310px;
+   }
+}
+
+@media screen and (max-width: 480px) {
+   .popup__photo {
+      max-width: 320px;
+      max-height: 299px;
+   }
+}
+
+@media screen and (max-width: 320px) {
+   .popup__photo {
+      max-width: 240px;
+   }
+}
