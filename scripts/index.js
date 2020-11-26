@@ -114,6 +114,7 @@ function clearForm(form) {
 function openPopup(elem, target = false) {
     switch (elem) {
         case "profile":
+            getProfile();
             popupProfile.classList.add("popup_opened");
         break;
         case "add":
