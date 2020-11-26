@@ -18,7 +18,6 @@ const popupAdd = document.querySelector(".popup__add");
 const popupPhoto = document.querySelector(".popup__photo-display");
 const popupSrc = document.querySelector(".popup__photo");
 
-
 const likes = document.querySelectorAll(".places__favorite");
 const places = document.querySelector('.places__list');
 
@@ -48,7 +47,6 @@ function submitPlace(evt) {
     clearForm(formAdd);
     closePopup("add");
 }
-
 
 function addPlace(title = "", link = "") {
     if (title && link) {
@@ -96,7 +94,6 @@ function closePopup(elem) {
     }
     closePopupOverlay();
 }
-
 
 function saveProfile(evt) {
     evt.preventDefault();
