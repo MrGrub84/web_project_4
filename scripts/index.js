@@ -43,9 +43,8 @@ function submitPlace(evt) {
     evt.preventDefault();
 
     const template = addPlace(inputPlaceTitle.value, inputPlaceUrl.value);
-    places.prepend(template);
     clearForm(formAdd);
-    closePopup("add");
+    closePopup(popupAdd);
 }
 
 function addPlace(title = "", link = "") {
@@ -57,7 +56,13 @@ function addPlace(title = "", link = "") {
         template.querySelector(".places__text").textContent = title;
         template.querySelector(".places__favorite").addEventListener("click", like);
         template.querySelector(".places__delete").addEventListener("click", deletePlace);
-        template.querySelector(".places__photo").addEventListener("click", function(evt) { openPopup("photo", evt.target); });
+        template.querySelector(".places__photo").addEventListener("click", function(evt) { 
+            const place = evt.target.parentElement;
+            const src = evt.target.src;
+            const title = place.querySelector(".places__text").textContent;
+            showPlace(src, title);
+            openPopup(popupPhoto); 
+        });
         return template;
     } else {
         return false;
@@ -71,35 +76,19 @@ function onLoad() {
     });
 }
 
-function closePopupOverlay() {
-    popup.classList.remove("popup_opened");
-}
-
 function openPopupOverlay() {
     popup.classList.add("popup_opened");
-
 }
 
-function closePopup(elem) {
-    switch (elem) {
-        case "profile":
-            popupProfile.classList.remove("popup_opened");
-        break;
-        case "add":
-            popupAdd.classList.remove("popup_opened");
-        break;
-        case "photo":
-            popupPhoto.classList.remove("popup_opened");
-        break;
-    }
-    closePopupOverlay();
+function closePopup(element) {
+    element.classList.remove("popup_opened");
+    popup.classList.remove("popup_opened");
 }
 
 function saveProfile(evt) {
     evt.preventDefault();
     profileName.textContent = inputName.value;
     profileAbout.textContent = inputAbout.value;
-    closePopupOverlay();
 }
 
 function getProfile() {
@@ -111,33 +100,26 @@ function clearForm(form) {
     form.querySelectorAll("input").forEach(function(item) { item.value = ""; });
 }
 
-function openPopup(elem, target = false) {
-    switch (elem) {
-        case "profile":
-            getProfile();
-            popupProfile.classList.add("popup_opened");
-        break;
-        case "add":
-            popupAdd.classList.add("popup_opened");
-        break;
-        case "photo":
-            const place = target.parentElement;
-            const src = target.src;
-            const title = place.querySelector(".places__text").textContent;
-            
-            showPlace(src, title);
-            popupPhoto.classList.add("popup_opened");
-        break;
-    }
+function openPopup(element) {
+    element.classList.add("popup_opened");
     openPopupOverlay();
 }
 
-profileEdit.addEventListener("click", function() { openPopup("profile"); });
-addButton.addEventListener("click", function() { openPopup("add"); });
-exitProfile.addEventListener("click", function() { closePopup("profile"); });
-exitAdd.addEventListener("click", function() { closePopup("add"); });
-exitPhoto.addEventListener("click", function() { closePopup("photo"); });
-formProfile.addEventListener('submit', saveProfile);
-formAdd.addEventListener('submit', submitPlace);
+profileEdit.addEventListener("click", () => {
+    getProfile(); 
+    openPopup(popupProfile); 
+});
+addButton.addEventListener("click", function() { openPopup(popupAdd); });
+exitProfile.addEventListener("click", function() { closePopup(popupProfile); });
+exitAdd.addEventListener("click", function() { closePopup(popupAdd); });
+exitPhoto.addEventListener("click", function() { closePopup(popupPhoto); });
+formProfile.addEventListener('submit', (evt) => {
+    saveProfile(evt);
+    closePopup(popupProfile);
+});
+formAdd.addEventListener('submit', (evt) => {
+    submitPlace(evt);
+    closePopup(popupAdd);
+});
 
 onLoad();
