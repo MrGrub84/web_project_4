@@ -24,4 +24,7 @@
     background-color: rgba(0, 0, 0, 0.5);
     color: #fff;
     visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }

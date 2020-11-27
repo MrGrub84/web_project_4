@@ -1,4 +1,5 @@
 .popup__profile {
+    margin: auto;
     opacity: 0;
     visibility: hidden;
     transition: opacity .3s, visibility .3s ease-out;

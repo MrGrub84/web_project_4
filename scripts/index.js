@@ -43,6 +43,7 @@ function submitPlace(evt) {
     evt.preventDefault();
 
     const template = addPlace(inputPlaceTitle.value, inputPlaceUrl.value);
+    places.prepend(template);
     clearForm(formAdd);
     closePopup(popupAdd);
 }
@@ -76,10 +77,6 @@ function onLoad() {
     });
 }
 
-function openPopupOverlay() {
-    popup.classList.add("popup_opened");
-}
-
 function closePopup(element) {
     element.classList.remove("popup_opened");
     popup.classList.remove("popup_opened");
@@ -102,7 +99,7 @@ function clearForm(form) {
 
 function openPopup(element) {
     element.classList.add("popup_opened");
-    openPopupOverlay();
+    popup.classList.add("popup_opened");
 }
 
 profileEdit.addEventListener("click", () => {
