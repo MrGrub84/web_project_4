@@ -40,8 +40,6 @@ function showPlace(src, title) {
 }
 
 function submitPlace(evt) {
-    evt.preventDefault();
-
     const template = addPlace(inputPlaceTitle.value, inputPlaceUrl.value);
     places.prepend(template);
     clearForm(formAdd);
@@ -83,7 +81,6 @@ function closePopup(element) {
 }
 
 function saveProfile(evt) {
-    evt.preventDefault();
     profileName.textContent = inputName.value;
     profileAbout.textContent = inputAbout.value;
 }
@@ -111,10 +108,12 @@ exitProfile.addEventListener("click", function() { closePopup(popupProfile); });
 exitAdd.addEventListener("click", function() { closePopup(popupAdd); });
 exitPhoto.addEventListener("click", function() { closePopup(popupPhoto); });
 formProfile.addEventListener('submit', (evt) => {
+    evt.preventDefault();
     saveProfile(evt);
     closePopup(popupProfile);
 });
 formAdd.addEventListener('submit', (evt) => {
+    evt.preventDefault();
     submitPlace(evt);
     closePopup(popupAdd);
 });
