@@ -13,9 +13,9 @@ const inputName = document.querySelector(".popup__name");
 const inputAbout = document.querySelector(".popup__about");
 const inputPlaceTitle = document.querySelector(".popup__place-title");
 const inputPlaceUrl = document.querySelector(".popup__url");
-const popupProfile = document.querySelector(".popup__profile");
-const popupAdd = document.querySelector(".popup__add");
-const popupPhoto = document.querySelector(".popup__photo-display");
+const popupProfile = document.querySelector(".popup_edit-profile");
+const popupAdd = document.querySelector(".popup_add-place");
+const popupPhoto = document.querySelector(".popup_photo-showcase");
 const popupSrc = document.querySelector(".popup__photo");
 
 const likes = document.querySelectorAll(".places__favorite");
@@ -47,25 +47,21 @@ function submitPlace(evt) {
 }
 
 function addPlace(title = "", link = "") {
-    if (title && link) {
-        const template = placeTemp.cloneNode(true);
-        const elementPhoto = template.querySelector(".places__photo");
-        elementPhoto.src = link;
-        elementPhoto.alt = title;
-        template.querySelector(".places__text").textContent = title;
-        template.querySelector(".places__favorite").addEventListener("click", like);
-        template.querySelector(".places__delete").addEventListener("click", deletePlace);
-        template.querySelector(".places__photo").addEventListener("click", function(evt) { 
-            const place = evt.target.parentElement;
-            const src = evt.target.src;
-            const title = place.querySelector(".places__text").textContent;
-            showPlace(src, title);
-            openPopup(popupPhoto); 
-        });
-        return template;
-    } else {
-        return false;
-    }
+    const template = placeTemp.cloneNode(true);
+    const elementPhoto = template.querySelector(".places__photo");
+    elementPhoto.src = link;
+    elementPhoto.alt = title;
+    template.querySelector(".places__text").textContent = title;
+    template.querySelector(".places__favorite").addEventListener("click", like);
+    template.querySelector(".places__delete").addEventListener("click", deletePlace);
+    elementPhoto.addEventListener("click", function(evt) { 
+        const place = evt.target.parentElement;
+        const src = evt.target.src;
+        const title = place.querySelector(".places__text").textContent;
+        showPlace(src, title);
+        openPopup(popupPhoto); 
+    });
+    return template;
 }
 
 function onLoad() {
@@ -77,7 +73,6 @@ function onLoad() {
 
 function closePopup(element) {
     element.classList.remove("popup_opened");
-    popup.classList.remove("popup_opened");
 }
 
 function saveProfile(evt) {
@@ -91,12 +86,11 @@ function getProfile() {
 }
 
 function clearForm(form) {
-    form.querySelectorAll("input").forEach(function(item) { item.value = ""; });
+    form.reset();
 }
 
 function openPopup(element) {
     element.classList.add("popup_opened");
-    popup.classList.add("popup_opened");
 }
 
 profileEdit.addEventListener("click", () => {

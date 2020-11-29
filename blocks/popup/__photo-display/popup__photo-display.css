@@ -1,6 +1,3 @@
 .popup__photo-display {
     display: flex;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .3s, visibility .3s ease-out;
 }
