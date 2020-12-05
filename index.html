@@ -41,9 +41,11 @@
         <div class="popup__container">
           <button class="button popup__exit" type="button" aria-label="Close Pop-up"></button>
           <h3 class="popup__title">Edit profile</h3>
-          <form action="#" method="GET" class="popup__form" name="profileForm"> 
-            <input type="text" class="input popup__name" placeholder="Name" name="name" required>
-            <input type="text" class="input popup__about" placeholder="About me" name="about" required>
+          <form action="#" method="GET" class="form popup__form" name="profileForm"> 
+            <input type="text" class="input popup__name" id="popup__name" minlength="2" maxlength="40" placeholder="Name" name="name" required>
+            <span class="form-error popup__name-error"></span>
+            <input type="text" class="input popup__about" id="popup__about" placeholder="About me" name="about" minlength="2" maxlength="200"  required>
+            <span class="form-error popup__about-error"></span>
             <button class="popup__button" type="submit">Save</button>
           </form>
         </div>
@@ -55,10 +57,12 @@
         <div class="popup__container">
           <button class="button popup__exit" type="button" aria-label="Close Pop-up"></button>
           <h3 class="popup__title">Add Place</h3>
-          <form action="#" method="GET" class="popup__form" name="addForm"> 
-            <input type="text" class="input popup__place-title" placeholder="Title" name="title" required>
-            <input type="url" class="input popup__url" placeholder="Image URL" name="url" required>
-            <button class="popup__button" type="submit">Save</button>
+          <form action="#" method="GET" class="form popup__form" name="addForm"> 
+            <input type="text" class="input popup__place-title" id="popup__place-title" placeholder="Title" name="title" minlength="2" maxlength="30" required>
+            <span class="form-error popup__place-title-error"></span>
+            <input type="url" class="input popup__url" id="popup__url" placeholder="Image URL" name="url" required>
+            <span class="form-error popup__url-error"></span>
+            <button class="popup__button popup__button_disabled" type="submit">Save</button>
           </form>
         </div>
       </div>

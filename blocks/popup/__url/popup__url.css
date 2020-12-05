@@ -1,5 +1,5 @@
 .popup__url {
-    margin: 0 0 40px 0;
+    margin: 25px 0 0 0;
     line-height: calc(17 / 14);
     font-size: 14px;
     padding: 0 0 13px 0;
@@ -8,7 +8,7 @@
 
 @media screen and (max-width: 530px) {
     .popup__url {
-        margin: 0 0 45px 0;
+        margin: 25px 0 45px 0;
         padding: 0 0 10px 0;
     }
 }
