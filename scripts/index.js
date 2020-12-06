@@ -115,36 +115,56 @@ formAdd.addEventListener('submit', (evt) => {
 
 onLoad();
 
-
-
+function toggleButtonState(formElement) {
+    const button = formElement.querySelector(".popup__button");
+    console.log(checkFormValidity(formElement));
+    if (checkFormValidity(formElement)) {
+        button.classList.remove("popup__button_disabled");
+        button.disabled = false;
+    } else {
+        button.classList.add("popup__button_disabled");
+        button.disabled = true;
+    }
+}
 
 const showInputError = (formElement, inputElement, errorMessage) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    const button = formElement.querySelector(".popup__button");
-    button.classList.add("popup__button_disabled");
     errorElement.textContent = errorMessage;
   };
   
   const hideInputError = (formElement, inputElement) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    const button = formElement.querySelector(".popup__button");
-    button.classList.remove("popup__button_disabled");
     errorElement.textContent = "";
   };
   
-  const checkInputValidity = (formElement, inputElement) => {
-    if (!inputElement.validity.valid) {
-      showInputError(formElement, inputElement, inputElement.validationMessage);
+  const checkInputValidity = (inputElement) => {
+    if (inputElement.validity.valid) {
+      return true;
     } else {
-      hideInputError(formElement, inputElement);
+      return false;
     }
   };
+
+  const checkFormValidity = (formElement) => {
+    let isValid = true;
+    Array.from(formElement.querySelectorAll(".input")).forEach((inputElement) => { 
+        if (!checkInputValidity(inputElement)) {
+           isValid = false;
+        }
+    });
+    return isValid;
+  }
   
   const setEventListeners = (formElement) => {
     const inputList = Array.from(formElement.querySelectorAll(".input"));
     inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", function () {
-        checkInputValidity(formElement, inputElement);
+        toggleButtonState(formElement);
+        if (checkInputValidity(inputElement)) {
+            hideInputError(formElement, inputElement);
+        } else {
+            showInputError(formElement, inputElement, inputElement.validationMessage);
+        }
       });
     });
   };
