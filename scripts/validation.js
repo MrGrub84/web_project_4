@@ -1,14 +1,9 @@
-function escListener(evt) {
-    if (evt.key === "Escape") {
-        closePopup(document.querySelector(".popup_opened"));
-    }
-};
-
-function overlayListener(evt) {
-    if (evt.target.classList.contains("popup_opened")) {
-        closePopup(evt.target);
-    }
-}
+const settingsObj = {
+    formSelector: ".form",
+    inputSelector: ".input",
+    submitButtonSelector: ".popup__button",
+    inactiveButtonClass: "popup__button_disabled",
+  };
 
 function toggleButtonState(settingsObj, formElement) {
     const button = formElement.querySelector(settingsObj.submitButtonSelector);
@@ -32,11 +27,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
   };
   
   const checkInputValidity = (inputElement) => {
-    if (inputElement.validity.valid) {
-      return true;
-    } else {
-      return false;
-    }
+    return inputElement.validity.valid;
   };
 
   const checkFormValidity = (settingsObj, formElement) => {
@@ -68,9 +59,4 @@ const showInputError = (formElement, inputElement, errorMessage) => {
     });
   }
   
-  enableValidation({
-    formSelector: ".form",
-    inputSelector: ".input",
-    submitButtonSelector: ".popup__button",
-    inactiveButtonClass: "popup__button_disabled",
-  }); 
+  enableValidation(settingsObj); 

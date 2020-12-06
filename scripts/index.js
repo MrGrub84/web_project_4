@@ -23,6 +23,18 @@ const places = document.querySelector('.places__list');
 
 const placeTemp = document.querySelector("#placeTemplate").content;
 
+function escListener(evt) {
+    if (evt.key === "Escape") {
+        closePopup(document.querySelector(".popup_opened"));
+    }
+};
+
+function overlayListener(evt) {
+    if (evt.target.classList.contains("popup_opened")) {
+        closePopup(evt.target);
+    }
+}
+
 function like(evt) {
     evt.target.classList.toggle("places__favorite_active");
 }
@@ -74,6 +86,7 @@ function onLoad() {
 function closePopup(element) {
     element.classList.remove("popup_opened");
     element.removeEventListener("click", overlayListener);
+    document.removeEventListener("keydown", escListener);
 }
 
 function saveProfile(evt) {
@@ -92,9 +105,7 @@ function clearForm(form) {
 
 function openPopup(element) {
     element.classList.add("popup_opened");
-
     element.addEventListener("click", overlayListener);
-
     document.addEventListener("keydown", escListener);
 }
 
@@ -102,7 +113,11 @@ profileEdit.addEventListener("click", () => {
     getProfile(); 
     openPopup(popupProfile); 
 });
-addButton.addEventListener("click", function() { openPopup(popupAdd); });
+addButton.addEventListener("click", function() { 
+    clearForm(formAdd);
+    toggleButtonState(settingsObj, formAdd);
+    openPopup(popupAdd);
+});
 exitProfile.addEventListener("click", function() { closePopup(popupProfile); });
 exitAdd.addEventListener("click", function() { closePopup(popupAdd); });
 exitPhoto.addEventListener("click", function() { closePopup(popupPhoto); });
