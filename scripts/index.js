@@ -23,8 +23,6 @@ const popupSrc = document.querySelector(".popup__photo");
 const likes = document.querySelectorAll(".places__favorite");
 const places = document.querySelector('.places__list');
 
-const placeTemp = document.querySelector("#placeTemplate").content;
-
 function escListener(evt) {
     if (evt.key === "Escape") {
         closePopup(document.querySelector(".popup_opened"));
@@ -38,7 +36,7 @@ function overlayListener(evt) {
 }
 
 function submitPlace(evt) {
-    const card = new Card({ text: inputPlaceTitle.value, url: inputPlaceUrl.value }, placeTemp);
+    const card = new Card({ text: inputPlaceTitle.value, url: inputPlaceUrl.value, cardSelector: "#placeTemplate"});
     places.prepend(card.get());
     clearForm(formAdd);
     closePopup(popupAdd);
@@ -46,7 +44,7 @@ function submitPlace(evt) {
 
 function onLoad() {
     initialCards.forEach(function(item) {
-        const card = new Card({ text: item.name, url: item.link }, placeTemp);
+        const card = new Card({ text: item.name, url: item.link, cardSelector: "#placeTemplate"});
         places.prepend(card.get());
     });
 }

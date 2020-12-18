@@ -1,10 +1,10 @@
 import { openPopup, popupPhoto } from "./index.js";
 
 export class Card {
-    constructor(data, templateElement) {
+    constructor(data) {
         this._text = data.text;
         this._url = data.url;
-        this._template = templateElement;
+        this._template = document.querySelector(data.cardSelector).content;;
 
         this._card = this._createCard(this._text, this._url);
     }
