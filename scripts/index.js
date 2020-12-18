@@ -1,3 +1,5 @@
+import { Card } from "./Card.js";
+
 const profileEdit = document.querySelector(".profile__edit");
 const addButton = document.querySelector(".profile__add-button");
 const profileName = document.querySelector(".profile__name");
@@ -35,22 +37,6 @@ function overlayListener(evt) {
     }
 }
 
-function like(evt) {
-    evt.target.classList.toggle("places__favorite_active");
-}
-
-function deletePlace(evt) {
-    evt.target.closest(".places__place").remove();
-}
-
-function showPlace(src, title) {
-    const photo = document.querySelector(".popup__photo");
-    photo.src = "";
-    photo.src = src;
-    photo.alt = title;
-    document.querySelector(".popup__photo-title").textContent = title;
-}
-
 function submitPlace(evt) {
     const template = addPlace(inputPlaceTitle.value, inputPlaceUrl.value);
     places.prepend(template);
@@ -58,28 +44,10 @@ function submitPlace(evt) {
     closePopup(popupAdd);
 }
 
-function addPlace(title = "", link = "") {
-    const template = placeTemp.cloneNode(true);
-    const elementPhoto = template.querySelector(".places__photo");
-    elementPhoto.src = link;
-    elementPhoto.alt = title;
-    template.querySelector(".places__text").textContent = title;
-    template.querySelector(".places__favorite").addEventListener("click", like);
-    template.querySelector(".places__delete").addEventListener("click", deletePlace);
-    elementPhoto.addEventListener("click", function(evt) { 
-        const place = evt.target.parentElement;
-        const src = evt.target.src;
-        const title = place.querySelector(".places__text").textContent;
-        showPlace(src, title);
-        openPopup(popupPhoto); 
-    });
-    return template;
-}
-
 function onLoad() {
     initialCards.forEach(function(item) {
-        const template = addPlace(item.name, item.link);
-        places.prepend(template);
+        const card = new Card({ text: item.name, url: item.link }, placeTemp);
+        places.prepend(card.get());
     });
 }
 
@@ -135,5 +103,5 @@ formAdd.addEventListener('submit', (evt) => {
 
 onLoad();
 
-
+export { popupPhoto, openPopup };
 
