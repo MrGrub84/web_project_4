@@ -6,7 +6,7 @@ export class Card {
         this._url = data.url;
         this._template = document.querySelector(data.cardSelector).content;;
 
-        this._card = this._createCard(this._text, this._url);
+        this._element = this._createCard(this._text, this._url);
     }
 
     _createCard(title = "", url = "") {
@@ -17,12 +17,12 @@ export class Card {
         template.querySelector(".places__text").textContent = title;
         template.querySelector(".places__favorite").addEventListener("click", this._like);
         template.querySelector(".places__delete").addEventListener("click", this._deletePlace);
-        elementPhoto = this._addPopupEventListener(elementPhoto, this._showPlace)
+        elementPhoto = this._addPopupEventListener(elementPhoto)
         return template;
     }
 
     get() {
-        return this._card;
+        return this._element;
     }
 
     _like(evt) {
@@ -33,12 +33,12 @@ export class Card {
         evt.target.closest(".places__place").remove();
     }
 
-    _addPopupEventListener(element, showPlaceFunction) {
-        element.addEventListener("click", function(evt) { 
+    _addPopupEventListener(element) {
+        element.addEventListener("click", (evt) => { 
             const place = evt.target.parentElement;
             const src = evt.target.src;
             const title = place.querySelector(".places__text").textContent;
-            showPlaceFunction(src, title);
+            this._showPlace(src, title);
             openPopup(popupPhoto); 
         });
         return element;

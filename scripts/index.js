@@ -1,6 +1,12 @@
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 
+const settingsObj = {
+    inputSelector: ".input",
+    submitButtonSelector: ".popup__button",
+    inactiveButtonClass: "popup__button_disabled",
+};
+
 const profileEdit = document.querySelector(".profile__edit");
 const addButton = document.querySelector(".profile__add-button");
 const profileName = document.querySelector(".profile__name");
@@ -23,6 +29,12 @@ const popupSrc = document.querySelector(".popup__photo");
 
 const likes = document.querySelectorAll(".places__favorite");
 const places = document.querySelector('.places__list');
+
+const formList = Array.from(document.querySelectorAll(".form"));
+        
+formList.forEach((formElement) => {
+    new FormValidator(settingsObj, formElement);
+});
 
 function escListener(evt) {
     if (evt.key === "Escape") {
@@ -81,8 +93,9 @@ profileEdit.addEventListener("click", () => {
     openPopup(popupProfile); 
 });
 addButton.addEventListener("click", function() { 
+    const validate = new FormValidator(settingsObj,formAdd);
+    validate.enableValidation();
     clearForm(formAdd);
-    toggleButtonState(settingsObj, formAdd);
     openPopup(popupAdd);
 });
 exitProfile.addEventListener("click", function() { closePopup(popupProfile); });
