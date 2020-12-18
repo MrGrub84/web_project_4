@@ -33,12 +33,12 @@ export class Card {
         evt.target.closest(".places__place").remove();
     }
 
-    _addPopupEventListener(element, showPlace) {
+    _addPopupEventListener(element, showPlaceFunction) {
         element.addEventListener("click", function(evt) { 
             const place = evt.target.parentElement;
             const src = evt.target.src;
             const title = place.querySelector(".places__text").textContent;
-            showPlace(src, title);
+            showPlaceFunction(src, title);
             openPopup(popupPhoto); 
         });
         return element;

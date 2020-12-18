@@ -38,8 +38,8 @@ function overlayListener(evt) {
 }
 
 function submitPlace(evt) {
-    const template = addPlace(inputPlaceTitle.value, inputPlaceUrl.value);
-    places.prepend(template);
+    const card = new Card({ text: inputPlaceTitle.value, url: inputPlaceUrl.value }, placeTemp);
+    places.prepend(card.get());
     clearForm(formAdd);
     closePopup(popupAdd);
 }
