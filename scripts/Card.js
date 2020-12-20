@@ -1,4 +1,4 @@
-import { openPopup, popupPhoto } from "./index.js";
+import { showPlace } from "./index.js";
 
 export class Card {
     constructor(data) {
@@ -6,18 +6,18 @@ export class Card {
         this._url = data.url;
         this._template = document.querySelector(data.cardSelector).content;;
 
-        this._element = this._createCard(this._text, this._url);
+        this._element = this._createCard();
     }
 
-    _createCard(title = "", url = "") {
+    _createCard() {
         const template = this._template.cloneNode(true);
-        let elementPhoto = template.querySelector(".places__photo");
-        elementPhoto.src = url;
-        elementPhoto.alt = title;
-        template.querySelector(".places__text").textContent = title;
+        const elementPhoto = template.querySelector(".places__photo");
+        elementPhoto.src = this._url;
+        elementPhoto.alt = this._text;
+        template.querySelector(".places__text").textContent = this._text;
         template.querySelector(".places__favorite").addEventListener("click", this._like);
         template.querySelector(".places__delete").addEventListener("click", this._deletePlace);
-        elementPhoto = this._addPopupEventListener(elementPhoto)
+        this._addPopupEventListener(elementPhoto);
         return template;
     }
 
@@ -35,20 +35,7 @@ export class Card {
 
     _addPopupEventListener(element) {
         element.addEventListener("click", (evt) => { 
-            const place = evt.target.parentElement;
-            const src = evt.target.src;
-            const title = place.querySelector(".places__text").textContent;
-            this._showPlace(src, title);
-            openPopup(popupPhoto); 
+            showPlace(this._url, this._text);
         });
-        return element;
-    }
-
-    _showPlace(src, title) {
-        const photo = document.querySelector(".popup__photo");
-        photo.src = "";
-        photo.src = src;
-        photo.alt = title;
-        document.querySelector(".popup__photo-title").textContent = title;
     }
 }

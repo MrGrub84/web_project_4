@@ -17,7 +17,6 @@ const exitAdd = document.querySelector(".popup__add .popup__exit");
 const exitPhoto = document.querySelector(".popup__photo-exit");
 const formProfile = document.querySelector(".popup__form[name='profileForm']");
 const formAdd = document.querySelector(".popup__form[name='addForm']");
-const popup = document.querySelector(".popup");
 const inputName = document.querySelector(".popup__name");
 const inputAbout = document.querySelector(".popup__about");
 const inputPlaceTitle = document.querySelector(".popup__place-title");
@@ -25,14 +24,14 @@ const inputPlaceUrl = document.querySelector(".popup__url");
 const popupProfile = document.querySelector(".popup_edit-profile");
 const popupAdd = document.querySelector(".popup_add-place");
 const popupPhoto = document.querySelector(".popup_photo-showcase");
-const popupSrc = document.querySelector(".popup__photo");
-
-const likes = document.querySelectorAll(".places__favorite");
+const photo = document.querySelector(".popup__photo");
+const photoPopupTitle = document.querySelector(".popup__photo-title")
 const places = document.querySelector('.places__list');
 
 const formList = Array.from(document.querySelectorAll(".form"));      
 formList.forEach((formElement) => {
-    new FormValidator(settingsObj, formElement);
+    const validator = new FormValidator(settingsObj, formElement);
+    validator.enableValidation();
 });
 
 function escListener(evt) {
@@ -48,16 +47,15 @@ function overlayListener(evt) {
 }
 
 function submitPlace(evt) {
-    const card = new Card({ text: inputPlaceTitle.value, url: inputPlaceUrl.value, cardSelector: "#placeTemplate"});
-    places.prepend(card.get());
-    clearForm(formAdd);
+    createCard({ text: inputPlaceTitle.value, url: inputPlaceUrl.value, cardSelector: "#placeTemplate"});
+    places.prepend(card);
     closePopup(popupAdd);
 }
 
 function onLoad() {
     initialCards.forEach(function(item) {
-        const card = new Card({ text: item.name, url: item.link, cardSelector: "#placeTemplate"});
-        places.prepend(card.get());
+        const card = createCard({ text: item.name, url: item.link, cardSelector: "#placeTemplate"});
+        places.prepend(card);
     });
 }
 
@@ -92,8 +90,6 @@ profileEdit.addEventListener("click", () => {
     openPopup(popupProfile); 
 });
 addButton.addEventListener("click", function() { 
-    const validate = new FormValidator(settingsObj,formAdd);
-    validate.enableValidation();
     clearForm(formAdd);
     openPopup(popupAdd);
 });
@@ -111,8 +107,21 @@ formAdd.addEventListener('submit', (evt) => {
     closePopup(popupAdd);
 });
 
+const showPlace = (src, title) => {
+    photo.src = "";
+    photo.src = src;
+    photo.alt = title;
+    photoPopupTitle.textContent = title;
+    openPopup(popupPhoto); 
+}
+
+const createCard = (item) => {
+    const card = new Card({ text: item.text, url: item.url, cardSelector: "#placeTemplate"});
+    return card.get()
+}
+
 
 onLoad();
 
-export { popupPhoto, openPopup };
+export { popupPhoto, openPopup, showPlace };
 
