@@ -30,8 +30,7 @@ const popupSrc = document.querySelector(".popup__photo");
 const likes = document.querySelectorAll(".places__favorite");
 const places = document.querySelector('.places__list');
 
-const formList = Array.from(document.querySelectorAll(".form"));
-        
+const formList = Array.from(document.querySelectorAll(".form"));      
 formList.forEach((formElement) => {
     new FormValidator(settingsObj, formElement);
 });
