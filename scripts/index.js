@@ -46,8 +46,8 @@ function overlayListener(evt) {
     }
 }
 
-function submitPlace(evt) {
-    createCard({ text: inputPlaceTitle.value, url: inputPlaceUrl.value, cardSelector: "#placeTemplate"});
+function submitPlace() {
+    const card = createCard({ text: inputPlaceTitle.value, url: inputPlaceUrl.value, cardSelector: "#placeTemplate"});
     places.prepend(card);
     closePopup(popupAdd);
 }
