@@ -2,7 +2,6 @@ import PopupWithImage from "./components/PopupWithImage.js";
 
 export class Card {
     constructor({ data, handleCardClick }) {
-        console.log(data)
         this._text = data.text;
         this._url = data.url;
         this._template = document.querySelector(data.cardSelector).content;;

@@ -7,9 +7,7 @@ export default class PopupWithImage extends Popup {
 
     open({ url, text }) {
         const photo = this._elementPopup.querySelector(".popup__photo");
-        console.log(text);
         this._elementPopup.querySelector(".popup__photo-title").textContent = text;
-        console.log(this._elementPopup.querySelector(".popup__photo-title"));
         photo.src = "";
         photo.src = url;
         photo.alt = text;

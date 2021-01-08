@@ -68,7 +68,6 @@ function getProfile() {
 
 profileEdit.addEventListener("click", () => {
     getProfile(); 
-    console.log("test");
     popupEditProfile.open();
 });
 addButton.addEventListener("click", function() { 
