@@ -1,11 +1,12 @@
-import { showPlace } from "./index.js";
+import PopupWithImage from "./components/PopupWithImage.js";
 
 export class Card {
-    constructor(data) {
+    constructor({ data, handleCardClick }) {
+        console.log(data)
         this._text = data.text;
         this._url = data.url;
         this._template = document.querySelector(data.cardSelector).content;;
-
+        this._handleCardClick = handleCardClick;
         this._element = this._createCard();
     }
 
@@ -35,7 +36,7 @@ export class Card {
 
     _addPopupEventListener(element) {
         element.addEventListener("click", (evt) => { 
-            showPlace(this._url, this._text);
+            this._handleCardClick();
         });
     }
 }
