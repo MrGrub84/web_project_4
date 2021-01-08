@@ -10,9 +10,6 @@ const profileEdit = document.querySelector(".profile__edit");
 const addButton = document.querySelector(".profile__add-button");
 const profileName = document.querySelector(".profile__name");
 const profileAbout = document.querySelector(".profile__title");
-
-const formProfile = document.querySelector(".popup__form[name='profileForm']");
-const formAdd = document.querySelector(".popup__form[name='addForm']");
 const inputName = document.querySelector(".popup__name");
 const inputAbout = document.querySelector(".popup__about");
 const inputPlaceTitle = document.querySelector(".popup__place-title");
@@ -59,6 +56,7 @@ function onLoad() {
 function saveProfile(evt) {
     profileName.textContent = inputName.value;
     profileAbout.textContent = inputAbout.value;
+    popupEditProfile.close();
 }
 
 function getProfile() {
@@ -72,11 +70,6 @@ profileEdit.addEventListener("click", () => {
 });
 addButton.addEventListener("click", function() { 
     popupAddPlace.open();
-});
-formProfile.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-    saveProfile(evt);
-    popupEditProfile.close();
 });
 
 
