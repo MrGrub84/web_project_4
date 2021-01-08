@@ -1,6 +1,4 @@
-import PopupWithImage from "./components/PopupWithImage.js";
-
-export class Card {
+export default class Card {
     constructor({ data, handleCardClick }) {
         this._text = data.text;
         this._url = data.url;
