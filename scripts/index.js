@@ -1,3 +1,10 @@
+import Popup from "./components/Popup.js";
+import { popupSelectors } from "./utils/constants.js";
+popupSelectors.forEach((popupSelector) => {
+    const popup = new Popup(popupSelector);
+    popup.setEventListeners();
+});
+
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 
