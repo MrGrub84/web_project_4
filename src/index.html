@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Around the US</title>
 </head>
 <body class="body">
   <div class="body__container">
     <header class="header">
-      <img src="./images/logo.svg" alt="Around the US Logo" class="header__logo">
+      <img src="<%=require("./images/logo.svg")%>" alt="Around the US Logo" class="header__logo">
     </header>
     
     <main class="content">
       <section class="profile">
-        <img src="./images/profile.jpg" alt="Jacques Cousteau" class="profile__photo">
+        <img src="<%=require("./images/profile.jpg")%>" alt="Jacques Cousteau" class="profile__photo">
         <div class="profile__text">
           <div class="profile__container">
             <h1 class="profile__name">Jacques Cousteau</h1>
@@ -87,6 +86,5 @@
       <button class="button places__favorite" type="button" aria-label="Like Place"></button>
     </li>
   </template>
-  <script type="module" src="./scripts/index.js"></script>
 </body>
 </html>

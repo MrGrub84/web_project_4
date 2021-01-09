@@ -1,13 +1,13 @@
-import PopupWithForm from "./components/PopupWithForm.js";
-import PopupWithImage from "./components/PopupWithImage.js";
-import FormValidator from "./FormValidator.js";
-import Card from "./components/Card.js";
-import Section from "./components/Section.js";
-import { settingsObj, initialCards } from "./utils/constants.js";
+import PopupWithForm from "../scripts/components/PopupWithForm.js";
+import PopupWithImage from "../scripts/components/PopupWithImage.js";
+import FormValidator from "../scripts/components/FormValidator.js";
+import Card from "../scripts/components/Card.js";
+import Section from "../scripts/components/Section.js";
+import { settingsObj, initialCards } from "../scripts/utils/constants.js";
 import {
     saveProfile,
     submitPlace
-} from "./utils/utils.js";
+} from "../scripts/utils/utils.js";
 
 //setup popups
 export const popupEditProfile = new PopupWithForm(".popup_edit-profile", { submitFunction: saveProfile });

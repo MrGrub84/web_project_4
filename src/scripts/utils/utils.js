@@ -1,6 +1,6 @@
 import Card from "../components/Card.js";
 import UserInfo from "../components/UserInfo.js";
-import { popupAddPlace, popupEditProfile, popupShowPlace, sectionCards } from "../index.js";
+import { popupAddPlace, popupEditProfile, popupShowPlace, sectionCards } from "../../pages/index.js";
 import {
     initialCards,
     profileName,
