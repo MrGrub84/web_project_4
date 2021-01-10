@@ -2,27 +2,32 @@ import Card from "../components/Card.js";
 import UserInfo from "../components/UserInfo.js";
 import { popupAddPlace, popupEditProfile, popupShowPlace, sectionCards } from "../../pages/index.js";
 import {
-    initialCards,
     profileName,
     profileAbout,
     inputName,
     inputAbout,
-    inputPlaceTitle,
-    inputPlaceUrl,
     profileEdit,
     addButton
 } from "./constants.js";
 
-const user = new UserInfo({name: profileName.textContent, job: profileAbout.textContent });
+const user = new UserInfo({name: profileName, job: profileAbout });
 
-function saveProfile(evt) {
+function saveProfile({ name, job }) {
     user.setUserInfo({
-        name: inputName.value,
-        job: inputAbout.value
+        name,
+        job
     });
-    profileName.textContent = inputName.value;
-    profileAbout.textContent = inputAbout.value;
     popupEditProfile.close();
+}
+
+function submitPlace({ title, url }) {
+    const card = createCard({ 
+        text: title, 
+        url: url, 
+        cardSelector: "#placeTemplate"
+    });
+    sectionCards.addItem(card);
+    popupAddPlace.close();
 }
 
 function getProfile() {
@@ -38,28 +43,7 @@ const createCard = (item) => {
             popupShowPlace.open({ url: item.url, text: item.text })
         },
     });
-    return card.get()
-}
-
-function onLoad() {
-    initialCards.forEach(function(item) {
-        const card = createCard({
-            text: item.text, 
-            url: item.link,
-            cardSelector: "#placeTemplate"
-        });
-        sectionCards.addItem(card);
-    });
-}
-
-function submitPlace() {
-    const card = createCard({ 
-        text: inputPlaceTitle.value, 
-        url: inputPlaceUrl.value, 
-        cardSelector: "#placeTemplate"
-    });
-    sectionCards.addItem(card);
-    popupAddPlace.close();
+    return card.get();
 }
 
 profileEdit.addEventListener("click", () => {
@@ -75,6 +59,5 @@ export {
     saveProfile,
     getProfile,
     createCard,
-    onLoad,
     submitPlace
 }
