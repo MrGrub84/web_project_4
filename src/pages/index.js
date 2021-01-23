@@ -1,3 +1,4 @@
+import Api from "../scripts/components/Api.js";
 import PopupWithForm from "../scripts/components/PopupWithForm.js";
 import PopupWithImage from "../scripts/components/PopupWithImage.js";
 import FormValidator from "../scripts/components/FormValidator.js";
@@ -27,9 +28,25 @@ formList.forEach((formElement) => {
 
 //load initial cards from array
 export const sectionCards = new Section({ 
-    items: initialCards, 
+    items: [], 
     renderer: createCard
 },
 ".places__list");
 sectionCards.setItems();
 
+export const api = new Api({
+    token: "0d68338b-8a47-4f79-b386-dae8c785bd51"
+});
+api.getMe({ 
+    resHandler: (res) => {
+        saveProfile({ name: res.name, job: res.about, photo: res.avatar })
+    }
+});
+
+api.getCards()
+    .then((res) => {
+        res.forEach((card) => {
+            console.log(card);
+            sectionCards.addItem(createCard(card));
+        });
+    });

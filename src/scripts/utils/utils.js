@@ -1,21 +1,26 @@
 import Card from "../components/Card.js";
 import UserInfo from "../components/UserInfo.js";
-import { popupAddPlace, popupEditProfile, popupShowPlace, sectionCards } from "../../pages/index.js";
+import { popupAddPlace, popupEditProfile, popupShowPlace, sectionCards, api } from "../../pages/index.js";
 import {
     profileName,
     profileAbout,
+    profilePhoto,
     inputName,
     inputAbout,
     profileEdit,
     addButton
 } from "./constants.js";
 
-const user = new UserInfo({name: profileName, job: profileAbout });
+const user = new UserInfo({name: profileName, job: profileAbout, photo: profilePhoto });
 
-function saveProfile({ name, job }) {
-    user.setUserInfo({
-        name,
-        job
+function saveProfile({ name, job, photo }) {
+    api.updateProfileData({ name, job })
+    .then((res) => {
+        user.setUserInfo({
+            name: res.name,
+            job: res.about,
+            photo: res.avatar
+        });
     });
     popupEditProfile.close();
 }
