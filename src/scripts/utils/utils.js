@@ -26,13 +26,16 @@ function saveProfile({ name, job, photo }) {
 }
 
 function submitPlace({ title, url }) {
-    const card = createCard({ 
-        text: title, 
-        url: url, 
-        cardSelector: "#placeTemplate"
-    });
-    sectionCards.addItem(card);
-    popupAddPlace.close();
+    api.addCard({ name: title, link: url })
+        .then((res) => {
+            const card = createCard({ 
+                name: res.name, 
+                link: res.link, 
+                cardSelector: "#placeTemplate"
+            });
+            sectionCards.addItem(card);
+            popupAddPlace.close();
+        });
 }
 
 function getProfile() {
@@ -43,11 +46,21 @@ function getProfile() {
 
 const createCard = (item) => {
     const card = new Card({ 
-        data: { text: item.text, url: item.url, cardSelector: "#placeTemplate"},
+        data: {card: item, cardSelector: "#placeTemplate"},
         handleCardClick: () => {
-            popupShowPlace.open({ url: item.url, text: item.text })
+            popupShowPlace.open({ url: item.link, text: item.name })
         },
+        handleDeleteClick: (evt) => {
+            api.deleteCard({ id: evt.target.id })
+                .then((res) => {
+                    console.log(res);
+                    evt.target.closest(".places__place").remove(); 
+                });
+        }
     });
+    if (item.owner.name !== user.getUserInfo().name) {
+        card._element.querySelector(".places__delete").remove();
+    }
     return card.get();
 }
 

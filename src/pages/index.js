@@ -37,16 +37,15 @@ sectionCards.setItems();
 export const api = new Api({
     token: "0d68338b-8a47-4f79-b386-dae8c785bd51"
 });
-api.getMe({ 
-    resHandler: (res) => {
-        saveProfile({ name: res.name, job: res.about, photo: res.avatar })
-    }
-});
-
-api.getCards()
+api.getMe()
     .then((res) => {
-        res.forEach((card) => {
-            console.log(card);
-            sectionCards.addItem(createCard(card));
-        });
+        saveProfile({ name: res.name, job: res.about, photo: res.avatar })
+    })
+    .then(() => {
+        api.getCards()
+            .then((res) => {
+                res.forEach((card) => {
+                    sectionCards.addItem(createCard(card));
+                });
+            });
     });

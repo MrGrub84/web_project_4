@@ -13,7 +13,6 @@ export default class Api {
                 }
             }
         if (body) request.body = body;
-        console.log(request);
         return fetch(`${this._baseUrl}/${category}/${parameter}`, request)
             .then((res) => {
                 return res.json();
@@ -21,10 +20,10 @@ export default class Api {
             .then((res) => { return res; });
     }
 
-    getMe({ resHandler }) {
+    getMe() {
         return this._request({ category: "users", parameter: "me", headers: {} })
             .then((res) => { 
-                resHandler(res) 
+               return res;
             });
     }
 
@@ -35,11 +34,29 @@ export default class Api {
         });
     }
 
+    addCard({ name, link}) {
+        return this._request({category: "cards", parameter: "", headers: { "Content-type": "application/json"}}, "POST", JSON.stringify({
+            name,
+            link
+        }))
+            .then((res) => {
+                return res;
+            });
+    }
+
     updateProfileData({ name, job }) {
         return this._request({category: "users", parameter: "me", headers: { "Content-type": "application/json"}}, "PATCH", JSON.stringify({
             name,
             about: job
         }))
+            .then((res) => {
+                return res;
+            });
+    }
+
+    deleteCard({ id }) {
+        console.log(id);
+        return this._request({category: "cards", parameter: id, headers: { } }, "DELETE")
             .then((res) => {
                 return res;
             });
