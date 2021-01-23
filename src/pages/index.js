@@ -6,6 +6,8 @@ import Section from "../scripts/components/Section.js";
 import { settingsObj, initialCards } from "../scripts/utils/constants.js";
 import {
     saveProfile,
+    updatePhoto,
+    delPlace,
     submitPlace,
     createCard
 } from "../scripts/utils/utils.js";
@@ -13,6 +15,10 @@ import {
 //setup popups
 export const popupEditProfile = new PopupWithForm(".popup_edit-profile", { submitFunction: saveProfile });
 popupEditProfile.setEventListeners();
+export const popupEditPhoto = new PopupWithForm(".popup_edit-photo", { submitFunction: updatePhoto });
+popupEditPhoto.setEventListeners();
+export const popupDeletePlace = new PopupWithForm(".popup_delete-place", { submitFunction: delPlace });
+popupDeletePlace.setEventListeners();
 export const popupAddPlace = new PopupWithForm(".popup_add-place", { submitFunction: submitPlace });
 popupAddPlace.setEventListeners();
 export const popupShowPlace = new PopupWithImage(".popup_photo-showcase");

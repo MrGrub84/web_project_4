@@ -55,8 +55,31 @@ export default class Api {
     }
 
     deleteCard({ id }) {
-        console.log(id);
         return this._request({category: "cards", parameter: id, headers: { } }, "DELETE")
+            .then((res) => {
+                return res;
+            });
+    }
+
+    likeCard({ id }) {
+        return this._request({category: "cards", parameter: `likes/${id}`, headers: { } }, "PUT")
+            .then((res) => {
+                return res;
+            });
+    }
+
+    unlikeCard({ id }) {
+        return this._request({category: "cards", parameter: `likes/${id}`, headers: { } }, "DELETE")
+            .then((res) => {
+                return res;
+            });
+    }
+
+    updatePhoto({ link }) {
+        // https://i.ibb.co/RQmN4dx/OBX-headstand.jpg
+        return this._request({category: "users", parameter: "me/avatar", headers: { "Content-type": "application/json"}}, "PATCH", JSON.stringify({
+            avatar: link
+        }))
             .then((res) => {
                 return res;
             });
