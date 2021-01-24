@@ -14,6 +14,7 @@
 @import url(./__photo-display/popup__photo-display.css);
 @import url(./__photo-wrapper/popup__photo-wrapper.css);
 @import url(./__photo-title/popup__photo-title.css);
+@import url(./__delete/popup__delete.css);
 
 .popup {
     position: fixed;
