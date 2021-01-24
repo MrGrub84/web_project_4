@@ -53,5 +53,9 @@ api.getMe()
                 res.forEach((card) => {
                     sectionCards.addItem(createCard(card));
                 });
-            });
+            }).catch((err) => {
+                console.log(err);
+            });;
+    }).catch((err) => {
+        console.log(err);
     });

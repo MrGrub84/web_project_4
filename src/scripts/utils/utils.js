@@ -21,33 +21,59 @@ function saveProfile({ name, job, photo }) {
             job: res.about,
             photo: res.avatar
         });
-    });
-    popupEditProfile.close();
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+    .finally(() => {
+        popupEditProfile.close();
+    })
 }
 
 function updatePhoto({ link }) {
+    const text = popupEditPhoto.updateSubmitButton({ text: "Saving..." });
     api.updatePhoto({ link })
         .then((res) => {
            profilePhoto.src = res.avatar;
            profilePhoto.alt = res.name;
-           popupEditPhoto.close();
-        });
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+        .finally(() => {
+            popupEditPhoto.close();
+            popupEditPhoto.updateSubmitButton({ text });
+        });;
 }
 
 function submitPlace({ title, url }) {
+    const text = popupAddPlace.updateSubmitButton({ text: "Saving..." });
     api.addCard({ name: title, link: url })
         .then((res) => {
             const card = createCard(res);
             sectionCards.addItem(card);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+        .finally(() => {
             popupAddPlace.close();
+            popupAddPlace.updateSubmitButton({ text });
         });
 }
 
 function delPlace(id) {
+    const text = popupDeletePlace.updateSubmitButton({ text: "Deleting..." });
     api.deleteCard({ id: id["popup__delete-id"] })
         .then((res) => {
-            document.querySelector(`#postId-${id["popup__delete-id"]}`).closest(".places__place").remove(); 
+            document.querySelector(`#postId-${id["popup__delete-id"]}`).closest(".places__place").remove();
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+        .finally(() => {
             popupDeletePlace.close();
+            popupDeletePlace.updateSubmitButton({ text });
         });
 }
 
@@ -74,12 +100,17 @@ const createCard = (item) => {
                 .then((res) => {
                     counter.textContent = res.likes.length;
                     evt.target.classList.remove("places__favorite_active");
+                })
+                .catch((err) => {
+                    console.log(err);
                 });
             } else {
                 api.likeCard({ id: evt.target.dataset.postId })
                 .then((res) => {
                     counter.textContent = res.likes.length;
                     evt.target.classList.add("places__favorite_active");
+                }).catch((err) => {
+                    console.log(err);
                 });
             }
         }

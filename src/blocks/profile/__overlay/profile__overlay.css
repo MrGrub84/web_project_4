@@ -1,0 +1,12 @@
+.profile__overlay { 
+    position: relative;
+    cursor: pointer;
+}
+
+.profile__overlay:hover > .profile__photo { 
+    opacity: .8;
+}
+
+.profile__overlay:hover > .profile__pencil { 
+    display: block;
+}

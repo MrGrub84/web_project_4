@@ -1,0 +1,6 @@
+.profile__pencil {
+    display: none;
+    position: absolute;
+    left: calc(50% - 26px);
+    top: calc(50% - 26px);
+}

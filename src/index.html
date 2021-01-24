@@ -13,7 +13,10 @@
     
     <main class="content">
       <section class="profile">
-        <img src="<%=require("./images/profile.jpg")%>" alt="Jacques Cousteau" class="profile__photo">
+        <div class="profile__overlay">
+          <img src="<%=require("./images/profile.jpg")%>" alt="Jacques Cousteau" class="profile__photo">
+          <img src="<%=require("./images/pencil.svg")%>" alt="Edit Profile Photo" class="profile__pencil">
+        </div>
         <div class="profile__text">
           <div class="profile__container">
             <h1 class="profile__name"></h1>
@@ -52,15 +55,17 @@
     </div>
 
     <div class="popup popup_edit-photo">
-      <div class="popup__container">
-        <button class="button popup__exit" type="button" aria-label="Close Pop-up"></button>
-        <h3 class="popup__title">Change Profile Picture</h3>
-        <form action="#" method="POST" class="form popup__form" name="editPhotoForm"> 
-          <input type="url" class="input popup__url" id="popup__url" placeholder="Image URL" name="link" required>
-          <span class="form-error popup__url-error"></span>
-          <button class="popup__button popup__button_disabled" type="submit" disabled>Save</button>
-        </form>
-      </div>
+      <div class="popup__change-photo">
+        <div class="popup__container">
+          <button class="button popup__exit" type="button" aria-label="Close Pop-up"></button>
+          <h3 class="popup__title">Change Profile Picture</h3>
+          <form action="#" method="POST" class="form popup__form" name="editPhotoForm"> 
+            <input type="url" class="input popup__url" id="popup__profile-photo-url" placeholder="Image URL" name="link" required>
+            <span class="form-error popup__profile-photo-url-error"></span>
+            <button class="popup__button popup__button_disabled" type="submit" disabled>Save</button>
+          </form>
+        </div>
+      </div >
     </div>
 
     <div class="popup popup_delete-place">
@@ -69,7 +74,7 @@
           <button class="button popup__exit" type="button" aria-label="Close Pop-up"></button>
           <h3 class="popup__title">Are You Sure?</h3>
           <form action="#" method="GET" class="form popup__form" name="profileForm"> 
-            <input type="hidden" class="" name="popup__delete-id" required>
+            <input type="hidden" class="input" name="popup__delete-id" required>
             <button class="popup__button" type="submit">Yes</button>
           </form>
         </div>
@@ -86,7 +91,7 @@
             <span class="form-error popup__place-title-error"></span>
             <input type="url" class="input popup__url" id="popup__url" placeholder="Image URL" name="url" required>
             <span class="form-error popup__url-error"></span>
-            <button class="popup__button popup__button_disabled" type="submit" disabled>Save</button>
+            <button class="popup__button popup__button_disabled" type="submit" disabled>Create</button>
           </form>
         </div>
       </div>

@@ -14,10 +14,12 @@ export default class Api {
             }
         if (body) request.body = body;
         return fetch(`${this._baseUrl}/${category}/${parameter}`, request)
-            .then((res) => {
-                return res.json();
-            })
-            .then((res) => { return res; });
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+                return Promise.reject(`Error: ${res.status}`);
+            });
     }
 
     getMe() {

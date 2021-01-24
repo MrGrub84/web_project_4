@@ -39,4 +39,11 @@ export default class PopupWithForm extends Popup {
         this._removeErrors();
         this._form.reset();
     }
+
+    updateSubmitButton({ text }) {
+        const e = this._form.querySelector('.popup__button[type="submit"]');
+        const prevText = e.textContent;
+        this._form.querySelector('.popup__button[type="submit"]').textContent = text;
+        return prevText;
+    }
 }
