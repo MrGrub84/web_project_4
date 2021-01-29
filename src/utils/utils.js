@@ -9,9 +9,9 @@ import {
     inputAbout,
     profileEdit,
     addButton
-} from "../pages/index.js";
+} from "../utils/constants.js";
 
-console.log(profileEdit, profileName, profilePhoto)
+console.log(profileEdit, profileName, addButton)
 
 const user = new UserInfo({name: profileName, job: profileAbout, photo: profilePhoto });
 
@@ -23,12 +23,10 @@ function saveProfile({ name, job, photo }) {
             job: res.about,
             photo: res.avatar
         });
+        popupEditProfile.close();
     })
     .catch((err) => {
         console.log(err);
-    })
-    .finally(() => {
-        popupEditProfile.close();
     })
 }
 
@@ -38,14 +36,12 @@ function updatePhoto({ link }) {
         .then((res) => {
            profilePhoto.src = res.avatar;
            profilePhoto.alt = res.name;
+           popupEditPhoto.close();
+           popupEditPhoto.updateSubmitButton({ text });
         })
         .catch((err) => {
             console.log(err);
-        })
-        .finally(() => {
-            popupEditPhoto.close();
-            popupEditPhoto.updateSubmitButton({ text });
-        });;
+        });
 }
 
 function submitPlace({ title, url }) {
@@ -54,13 +50,11 @@ function submitPlace({ title, url }) {
         .then((res) => {
             const card = createCard(res);
             sectionCards.addItem(card);
+            popupAddPlace.close();
+            popupAddPlace.updateSubmitButton({ text });
         })
         .catch((err) => {
             console.log(err);
-        })
-        .finally(() => {
-            popupAddPlace.close();
-            popupAddPlace.updateSubmitButton({ text });
         });
 }
 
@@ -69,13 +63,11 @@ function delPlace(id) {
     api.deleteCard({ id: id["popup__delete-id"] })
         .then((res) => {
             document.querySelector(`#postId-${id["popup__delete-id"]}`).closest(".places__place").remove();
+            popupDeletePlace.close();
+            popupDeletePlace.updateSubmitButton({ text });
         })
         .catch((err) => {
             console.log(err);
-        })
-        .finally(() => {
-            popupDeletePlace.close();
-            popupDeletePlace.updateSubmitButton({ text });
         });
 }
 
