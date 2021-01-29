@@ -1,6 +1,6 @@
 export default class Api {
-    constructor({ token }) {
-        this._baseUrl = "https://around.nomoreparties.co/v1/group-8";
+    constructor({ token, baseUrl }) {
+        this._baseUrl = baseUrl;
         this._token = token;
     }
 

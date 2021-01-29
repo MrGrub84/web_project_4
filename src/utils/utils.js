@@ -1,6 +1,6 @@
 import Card from "../components/Card.js";
 import UserInfo from "../components/UserInfo.js";
-import { popupAddPlace, popupEditProfile, popupEditPhoto, popupShowPlace, popupDeletePlace, sectionCards, api } from "../../pages/index.js";
+import { popupAddPlace, popupEditProfile, popupEditPhoto, popupShowPlace, popupDeletePlace, sectionCards, api } from "../pages/index.js";
 import {
     profileName,
     profileAbout,
@@ -9,7 +9,9 @@ import {
     inputAbout,
     profileEdit,
     addButton
-} from "./constants.js";
+} from "../pages/index.js";
+
+console.log(profileEdit, profileName, profilePhoto)
 
 const user = new UserInfo({name: profileName, job: profileAbout, photo: profilePhoto });
 

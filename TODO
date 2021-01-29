@@ -1,5 +1,0 @@
-- integrate failed requests error checking
-    - place in _request and return rejected promise
-    - use res.ok
-- delete this file
-- fix form validator on update photo, check others as well
