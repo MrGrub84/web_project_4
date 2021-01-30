@@ -11,8 +11,6 @@ import {
     addButton
 } from "../utils/constants.js";
 
-console.log(profileEdit, profileName, addButton)
-
 const user = new UserInfo({name: profileName, job: profileAbout, photo: profilePhoto });
 
 function saveProfile({ name, job, photo }) {
